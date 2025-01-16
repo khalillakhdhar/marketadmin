@@ -5,8 +5,8 @@
       <form [formGroup]="formulaireProduit" (ngSubmit)="onSoumettre()">
         <div class="mb-3">
           <label for="nom" class="form-label">Nom du Produit</label>
-          <input type="text" class="form-control" formControlName="nom" placeholder="Entrez le nom du produit" />
-          <div *ngIf="formulaireProduit.controls['nom'].invalid && formulaireProduit.controls['nom'].touched" class="text-danger">
+          <input type="text" class="form-control" formControlName="name" placeholder="Entrez le nom du produit" />
+          <div *ngIf="formulaireProduit.controls['name'].invalid && formulaireProduit.controls['name'].touched" class="text-danger">
             Le nom du produit est requis
           </div>
         </div>
@@ -23,8 +23,8 @@
         </div>
         <div class="mb-3">
           <label for="prix" class="form-label">Prix</label>
-          <input type="number" class="form-control" formControlName="prix" placeholder="Entrez le prix" />
-          <div *ngIf="formulaireProduit.controls['prix'].invalid && formulaireProduit.controls['prix'].touched" class="text-danger">
+          <input type="number" class="form-control" formControlName="price" placeholder="Entrez le prix" />
+          <div *ngIf="formulaireProduit.controls['price'].invalid && formulaireProduit.controls['price'].touched" class="text-danger">
             Le prix doit être supérieur à 0
           </div>
         </div>

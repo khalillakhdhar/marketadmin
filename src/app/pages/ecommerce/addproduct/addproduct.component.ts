@@ -33,9 +33,9 @@ export class AddproductComponent implements OnInit {
 
   ngOnInit(): void {
     this.formulaireProduit = this.constructeurFormulaire.group({
-      nom: ['', Validators.required],
+      name: ['', Validators.required],
       description: ['', Validators.required],
-      prix: [0, [Validators.required, Validators.min(0.01)]],
+      price: [0, [Validators.required, Validators.min(0.01)]],
       stock: [0, [Validators.required, Validators.min(1)]],
       categorieId: ['', Validators.required] // Champ pour la catégorie
     });
@@ -74,17 +74,21 @@ export class AddproductComponent implements OnInit {
       }
     });
   }
-
-  // Gestion de la soumission du formulaire et de la création du produit
   async onSoumettre(): Promise<void> {
     if (this.formulaireProduit.valid && this.photo) {
       try {
         const urlPhoto = await this.telechargerPhoto();
-        const donneesProduit = { ...this.formulaireProduit.value, photo: urlPhoto };
+
+        // Créer l'objet produit avec un objet category complet
+        const donneesProduit = {
+          ...this.formulaireProduit.value,
+          photo: urlPhoto,
+          category: { id: this.formulaireProduit.value.categorieId } // Construire l'objet attendu
+        };
 
         this.serviceProduit.addProduct(donneesProduit).subscribe(
           () => {
-            this.routeur.navigate(['/produits']);
+            this.routeur.navigate(['../products']);
           },
           (erreur) => {
             console.error('Erreur lors de la création du produit :', erreur);
@@ -97,4 +101,5 @@ export class AddproductComponent implements OnInit {
       console.error('Le formulaire est invalide ou aucune photo n’a été sélectionnée');
     }
   }
+
 }

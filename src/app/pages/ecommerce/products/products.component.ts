@@ -16,9 +16,9 @@ import { Order } from 'src/app/core/models/order.interface';
 })
 export class ProductsComponent implements OnInit {
   breadCrumbItems: Array<{}>;
-  pricevalue: number = 100;
+  pricevalue: number = 0;
   minVal: number = 0; // Prix minimum
-  maxVal: number = 500; // Prix maximum
+  maxVal: number = 10000000; // Prix maximum
   page: number = 1;
   categoryId: number = 0; // Catégorie par défaut (aucun filtre)
   searchName: string = ''; // Terme de recherche
@@ -54,6 +54,7 @@ export class ProductsComponent implements OnInit {
       categoryId: this.categoryId
     }).subscribe((products) => {
       this.products = products;
+      console.log("produits",products)
       this.filteredProducts = products; // Initialiser filteredProducts
     });
   }
