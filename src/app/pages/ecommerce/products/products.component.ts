@@ -18,14 +18,14 @@ export class ProductsComponent implements OnInit {
   breadCrumbItems: Array<{}>;
   pricevalue: number = 100;
   minVal: number = 0; // Prix minimum
-  maxVal: number = 500; // Prix maximum
+  maxVal: number = 10000; // Prix maximum
   page: number = 1;
   categoryId: number = 0; // Catégorie par défaut (aucun filtre)
   searchName: string = ''; // Terme de recherche
 
   priceoption: Options = {
     floor: 0,
-    ceil: 100000, // Prix maximum configurable
+    ceil: 10000, // Prix maximum configurable
     translate: (value: number): string => `TND${value}`
   };
 
