@@ -1,3 +1,4 @@
+import { Category } from "./category.interface";
 import { UserInfo } from "./user-info.interface";
 
 export interface Product {
@@ -8,6 +9,5 @@ export interface Product {
   stock: number;
   photo: string;
   initialPrice: number;
-  highestBidPrice: number;
-  highestBidder?: UserInfo;
+  category:Category;
 }
